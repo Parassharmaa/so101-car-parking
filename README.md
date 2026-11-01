@@ -54,7 +54,9 @@ hf download blazeofchi/so101-car-parking-validation --repo-type dataset --includ
 
 ```sh
 so101-evaluate checkpoints/003000/policy --collection data/evaluation --output runs/eval --eager
-so101-replay runs/eval/scene_00.json --video captures/example.mp4
+so101-render-recorded runs/eval/scene_00.json --video captures/example.mp4
 ```
+
+The video command replays logged simulator states.
 
 The robot asset license is retained under `src/so101_car_parking/simulation/assets/models/so101/LICENSE`.
