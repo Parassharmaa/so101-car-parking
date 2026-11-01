@@ -7,7 +7,7 @@ The selected checkpoint demonstrates partial bay overlap. Full parking remains u
 
 ![Partial-placement preview](docs/media/demo.gif)
 
-[Watch the 15-second preview](docs/media/demo.mp4). The clip shows a partial placement, not full containment.
+[Watch the 15-second preview](docs/media/demo.mp4) or the [full project video](https://huggingface.co/blazeofchi/so101-car-parking-pi05/resolve/main/media/submission.mp4). The clip shows a partial placement, not full containment.
 
 ## Setup
 
