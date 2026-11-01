@@ -47,12 +47,13 @@ Download the selected checkpoint. Its weights use the Gemma license.
 
 ```sh
 hf download blazeofchi/so101-car-parking-pi05 --local-dir checkpoints/003000/policy
+hf download blazeofchi/so101-car-parking-validation --repo-type dataset --include "raw/*.json" --local-dir data/evaluation
 ```
 
 [Model](https://huggingface.co/blazeofchi/so101-car-parking-pi05) · [Training data](https://huggingface.co/datasets/blazeofchi/so101-car-parking-train) · [Validation data](https://huggingface.co/datasets/blazeofchi/so101-car-parking-validation)
 
 ```sh
-so101-evaluate checkpoints/003000/policy --collection data/parking-300 --output runs/eval --eager
+so101-evaluate checkpoints/003000/policy --collection data/evaluation --output runs/eval --eager
 so101-replay runs/eval/scene_00.json --video captures/example.mp4
 ```
 
