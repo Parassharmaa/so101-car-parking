@@ -1,0 +1,14 @@
+mujoco==3.17.0
+numpy==2.2.6
+imageio==2.38.1
+imageio-ffmpeg==0.7.0
+lerobot[pi,training]==0.6.1
+torch==2.8.0
+torchvision==0.23.0
+transformers==5.5.4
+accelerate==1.15.0
+peft==0.21.2
+av==15.1.0
+pyarrow==26.0.0
+safetensors==0.8.0
+sentencepiece==0.2.2
