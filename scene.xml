@@ -1,0 +1,50 @@
+<mujoco model="so101_road_pushing">
+  <include file="models/so101/so101.xml"/>
+  <compiler meshdir="models/so101/assets" strippath="true"/>
+  <option iterations="50" noslip_iterations="20"/>
+
+  <statistic center="0.18 0 0.12" extent="0.65"/>
+  <visual>
+    <global azimuth="135" elevation="-35" offwidth="960" offheight="720"/>
+    <headlight ambient="0.25 0.25 0.25" diffuse="0.3 0.3 0.3"/>
+  </visual>
+
+  <worldbody>
+    <light pos="0.2 -0.3 1.5" dir="0 0 -1" diffuse="0.6 0.6 0.6" specular="0.1 0.1 0.1"/>
+    <geom name="floor" type="plane" pos="0 0 -0.055" size="2 2 0.01" rgba="0.12 0.14 0.17 1"/>
+    <geom name="table" type="box" pos="0.18 0 -0.025" size="0.4 0.3 0.025"
+      friction="0.4 0.005 0.0001" rgba="0.82 0.79 0.71 1"/>
+    <camera name="overhead" pos="0.20 0 0.9" quat="1 0 0 0" fovy="48"/>
+    <camera name="overview" pos="0.75 -0.6 0.6" xyaxes="0.725 0.689 0 -0.366 0.385 0.847" fovy="48"/>
+
+    <body name="car" pos="0.29 -0.08 0.014">
+      <freejoint name="car_free"/>
+      <geom name="chassis" type="box" pos="0 0 0.006" size="0.04 0.017 0.006"
+        mass="0.06" rgba="0.12 0.42 0.85 1"/>
+      <geom name="cabin" type="box" pos="-0.006 0 0.02" size="0.019 0.014 0.008"
+        mass="0.015" rgba="0.08 0.18 0.27 1"/>
+      <geom name="front_bumper" type="box" pos="0.041 0 0.004" size="0.003 0.017 0.003"
+        mass="0.002" rgba="0.85 0.85 0.85 1"/>
+      <body name="front_left_wheel" pos="0.025 0.023 0">
+        <joint name="front_left_axle" type="hinge" axis="0 1 0" limited="false" damping="0.0002" frictionloss="0.0002"/>
+        <geom type="cylinder" size="0.012 0.004" quat="1 1 0 0" mass="0.005"
+          condim="6" friction="0.4 0.002 0.0001" rgba="0.06 0.06 0.07 1"/>
+      </body>
+      <body name="front_right_wheel" pos="0.025 -0.023 0">
+        <joint name="front_right_axle" type="hinge" axis="0 1 0" limited="false" damping="0.0002" frictionloss="0.0002"/>
+        <geom type="cylinder" size="0.012 0.004" quat="1 1 0 0" mass="0.005"
+          condim="6" friction="0.4 0.002 0.0001" rgba="0.06 0.06 0.07 1"/>
+      </body>
+      <body name="rear_left_wheel" pos="-0.025 0.023 0">
+        <joint name="rear_left_axle" type="hinge" axis="0 1 0" limited="false" damping="0.0002" frictionloss="0.0002"/>
+        <geom type="cylinder" size="0.012 0.004" quat="1 1 0 0" mass="0.005"
+          condim="6" friction="0.4 0.002 0.0001" rgba="0.06 0.06 0.07 1"/>
+      </body>
+      <body name="rear_right_wheel" pos="-0.025 -0.023 0">
+        <joint name="rear_right_axle" type="hinge" axis="0 1 0" limited="false" damping="0.0002" frictionloss="0.0002"/>
+        <geom type="cylinder" size="0.012 0.004" quat="1 1 0 0" mass="0.005"
+          condim="6" friction="0.4 0.002 0.0001" rgba="0.06 0.06 0.07 1"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>
