@@ -8,10 +8,10 @@ import mujoco
 import numpy as np
 import torch
 
-from collect import outcome
-from parking import load_task
-from teacher import DT, grasp_contacts, robot_contact
-from vla import EXECUTION_STEPS, load_bundle
+from so101_car_parking.data.collect import outcome
+from so101_car_parking.simulation.parking import load_task
+from so101_car_parking.simulation.teacher import DT, grasp_contacts, robot_contact
+from so101_car_parking.policy.vla import EXECUTION_STEPS, load_bundle
 
 
 def ground_support(model, data, car_id):
@@ -180,7 +180,7 @@ def main():
     parser.add_argument("checkpoint", type=Path)
     parser.add_argument("--collection", type=Path, default=Path("data/parking-100"))
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--device", choices=["cpu", "cuda", "mps"], default="cuda")
+    parser.add_argument("--device", choices=["cuda"], default="cuda")
     parser.add_argument("--max-steps", type=int, default=2400)
     parser.add_argument("--limit", type=int)
     parser.add_argument(

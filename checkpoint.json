@@ -2,7 +2,9 @@
   "base_model": "lerobot/pi05_base",
   "base_revision": "22c30e5b34f9e7ab738b1b34fc2fc5ecfe2d28f0",
   "tokenizer_revision": "35e4f46485b4d07967e7e9935bc3786aad50687c",
-  "learned_weights_sha256": "2ef22a5058f4f00a862d564d02f369d974d7dc0ff0fecc7b300cc3ac8cffd677",
+  "learned_weights_sha256": "834d451f9ef165e63e6d7fd4f71cf1ea1cd2dbc135d7ed5150e188be3edb198b",
   "frozen_parameters_sha256": "c42422322df39f80343345d2278c8b498e28d9d36427e5ac9d511f29380f3ec8",
-  "step": 3000
+  "step": 3000,
+  "original_checkpoint_sha256": "2ef22a5058f4f00a862d564d02f369d974d7dc0ff0fecc7b300cc3ac8cffd677",
+  "hub_model": "blazeofchi/so101-car-parking-pi05"
 }

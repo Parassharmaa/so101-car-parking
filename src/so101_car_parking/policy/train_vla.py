@@ -11,7 +11,13 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader, Subset
 
-from vla import dataset, make_model, load_bundle, save_bundle, model_reference
+from so101_car_parking.policy.vla import (
+    dataset,
+    make_model,
+    load_bundle,
+    save_bundle,
+    model_reference,
+)
 
 
 def autocast(device):
@@ -62,7 +68,7 @@ def main():
     parser.add_argument("--stop-at", type=int)
     parser.add_argument("--batch-size", type=int, default=16)
     parser.add_argument("--workers", type=int, default=4)
-    parser.add_argument("--device", choices=["cpu", "cuda", "mps"], default="cuda")
+    parser.add_argument("--device", choices=["cuda"], default="cuda")
     parser.add_argument("--save-every", type=int, default=5000)
     parser.add_argument("--resume", type=Path)
     parser.add_argument(

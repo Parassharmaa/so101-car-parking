@@ -8,10 +8,10 @@ import mujoco
 import mujoco.viewer
 import numpy as np
 
-from sim import load_scene
+from so101_car_parking.simulation.sim import load_scene
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent / "assets"
 COLORS = {
     "red": (0.85, 0.12, 0.10),
     "blue": (0.10, 0.40, 0.85),

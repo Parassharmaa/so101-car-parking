@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "so101-car-parking"
+version = "0.1.0"
+description = "Language-guided toy-car placement in MuJoCo"
+requires-python = ">=3.11,<3.14"
+dynamic = ["dependencies"]
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+
+[project.scripts]
+so101-preview = "so101_car_parking.simulation.parking:main"
+so101-collect = "so101_car_parking.data.collect:main"
+so101-collect-more = "so101_car_parking.data.collect_more:main"
+so101-export = "so101_car_parking.data.export_data:main"
+so101-prepare = "so101_car_parking.data.prepare_stats:main"
+so101-merge = "so101_car_parking.data.merge_training:main"
+so101-train = "so101_car_parking.policy.train_vla:main"
+so101-evaluate = "so101_car_parking.evaluation.eval_vla:main"
+so101-replay = "so101_car_parking.evaluation.replay:main"
+so101-render-recorded = "so101_car_parking.evaluation.render_recorded:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.package-data]
+so101_car_parking = ["simulation/assets/scene.xml", "simulation/assets/models/so101/so101.xml", "simulation/assets/models/so101/LICENSE", "simulation/assets/models/so101/assets/*.stl"]

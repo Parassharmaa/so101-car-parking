@@ -1,3 +1,4 @@
+from so101_car_parking.data.provenance import simulation_source_hash
 import argparse
 import hashlib
 import json
@@ -8,9 +9,9 @@ from lerobot.datasets.lerobot_dataset import LeRobotDataset
 import mujoco
 import numpy as np
 
-from parking import load_task
-from replay import replay
-from teacher import DT
+from so101_car_parking.simulation.parking import load_task
+from so101_car_parking.evaluation.replay import replay
+from so101_car_parking.simulation.teacher import DT
 
 
 JOINTS = [
@@ -98,10 +99,7 @@ def main():
     parser.add_argument("--merge-parts", nargs="+", type=Path)
     args = parser.parse_args()
     plan = json.loads((args.collection / "plan.json").read_text())
-    names = ["scene.xml", "sim.py", "parking.py", "teacher.py", "collect.py"]
-    source_hash = hashlib.sha256(
-        b"".join(Path(__file__).with_name(name).read_bytes() for name in names)
-    ).hexdigest()
+    source_hash = simulation_source_hash()
     if source_hash != plan["source_hash"]:
         raise RuntimeError("Simulator/teacher source differs from the collection.")
     episodes = [

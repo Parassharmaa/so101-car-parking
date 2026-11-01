@@ -8,7 +8,7 @@ import shutil
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from export_data import merge_parts
+from so101_car_parking.data.export_data import merge_parts
 from lerobot.datasets.lerobot_dataset import LeRobotDataset
 
 

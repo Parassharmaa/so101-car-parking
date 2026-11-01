@@ -1,10 +1,13 @@
 .venv/
 __pycache__/
 .DS_Store
-data/
-runs/
-captures/
-checkpoints/
+/data/
+/runs/
+/captures/
+/checkpoints/
 *.pt
 *.safetensors
 .env
+/build/
+/dist/
+*.egg-info/

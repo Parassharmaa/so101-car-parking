@@ -5,8 +5,8 @@ from pathlib import Path
 import mujoco
 import numpy as np
 
-from parking import load_task
-from teacher import DT
+from so101_car_parking.simulation.parking import load_task
+from so101_car_parking.simulation.teacher import DT
 
 
 def replay(model, data, arrays):

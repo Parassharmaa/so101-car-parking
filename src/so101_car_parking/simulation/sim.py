@@ -6,7 +6,9 @@ import mujoco.viewer
 
 def load_scene(model=None):
     if model is None:
-        model = mujoco.MjModel.from_xml_path(str(Path(__file__).with_name("scene.xml")))
+        model = mujoco.MjModel.from_xml_path(
+            str(Path(__file__).parent / "assets" / "scene.xml")
+        )
     data = mujoco.MjData(model)
     home = {
         "shoulder_pan": 0,

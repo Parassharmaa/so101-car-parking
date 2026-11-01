@@ -1,3 +1,4 @@
+from so101_car_parking.data.provenance import simulation_source_hash
 import argparse
 from concurrent.futures import ProcessPoolExecutor, as_completed
 import hashlib
@@ -6,8 +7,8 @@ from pathlib import Path
 
 import numpy as np
 
-from collect import bay_region, make_plan, run_episode
-from parking import make_task
+from so101_car_parking.data.collect import bay_region, make_plan, run_episode
+from so101_car_parking.simulation.parking import make_task
 
 
 def collect_one(item):
@@ -64,10 +65,7 @@ def main():
     requests = [r for r in make_plan(args.count * 5 // 4) if r["split"] == "train"]
     if len(requests) != args.count:
         raise RuntimeError("Training plan count differs")
-    sources = ["scene.xml", "sim.py", "parking.py", "teacher.py", "collect.py"]
-    digest = hashlib.sha256(
-        b"".join(Path(name).read_bytes() for name in sources)
-    ).hexdigest()
+    digest = simulation_source_hash()
     plan = dict(
         source_hash=digest,
         generator_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),

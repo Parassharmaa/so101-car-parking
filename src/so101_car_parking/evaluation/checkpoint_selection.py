@@ -8,9 +8,9 @@ import mujoco
 
 import numpy as np
 
-from parking import load_task
+from so101_car_parking.simulation.parking import load_task
 
-from teacher import robot_contact
+from so101_car_parking.simulation.teacher import robot_contact
 
 
 def load_records(folder):

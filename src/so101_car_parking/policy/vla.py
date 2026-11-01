@@ -1,12 +1,12 @@
 from pathlib import Path
 from lerobot.datasets.lerobot_dataset import LeRobotDataset
-from pi05 import (
-    make_model,
-    save_bundle,
-    load_bundle,
+from so101_car_parking.policy.pi05 import (
     BASE_ID,
     BASE_REVISION,
     TOKENIZER_REVISION,
+    load_bundle as load_bundle,
+    make_model as make_model,
+    save_bundle as save_bundle,
 )
 
 EXECUTION_STEPS = 10

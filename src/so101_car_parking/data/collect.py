@@ -1,3 +1,4 @@
+from so101_car_parking.data.provenance import simulation_source_hash
 import argparse
 from collections import Counter
 import hashlib
@@ -13,8 +14,8 @@ import time
 import mujoco
 import numpy as np
 
-from parking import COLORS, load_task, make_task
-from teacher import DT, grasp_contacts, pick_and_place, push_to_bay
+from so101_car_parking.simulation.parking import COLORS, load_task, make_task
+from so101_car_parking.simulation.teacher import DT, grasp_contacts, pick_and_place, push_to_bay
 
 
 def bay_region(task):
@@ -176,6 +177,11 @@ def run_episode(task):
     return arrays, result
 
 
+
+def git_revision():
+    result = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True)
+    return result.stdout.strip() if result.returncode == 0 else None
+
 def main():
     parser = argparse.ArgumentParser(
         description="Collect successful scripted parking episodes."
@@ -191,10 +197,7 @@ def main():
     args.output.mkdir(parents=True, exist_ok=True)
     raw = args.output / "raw"
     raw.mkdir(exist_ok=True)
-    files = ["scene.xml", "sim.py", "parking.py", "teacher.py", "collect.py"]
-    source_hash = hashlib.sha256(
-        b"".join(Path(__file__).with_name(name).read_bytes() for name in files)
-    ).hexdigest()
+    source_hash = simulation_source_hash()
     plan_path = args.output / "plan.json"
     if plan_path.exists():
         saved = json.loads(plan_path.read_text())
@@ -214,9 +217,7 @@ def main():
                     numpy=np.__version__,
                     python=platform.python_version(),
                     fps=round(1 / DT),
-                    git_commit=subprocess.check_output(
-                        ["git", "rev-parse", "HEAD"], text=True
-                    ).strip(),
+                    git_commit=git_revision(),
                 ),
                 indent=2,
             )
